@@ -3,6 +3,8 @@ require 'open-uri'
 
 class Parse
 
+  attr_reader :title, :url, :post_id, :points, :comments, :user_id, :time
+
   def initialize(url)
     doc = Nokogiri::HTML(File.open(open(url)))
     @title = doc.search('.title > a:nth-child(2)').map {|link| link.inner_text}
